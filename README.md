@@ -1,6 +1,6 @@
 <!-- HEADER -->
 <h1 align="center">🍕 <strong>Pizza Sales SQL Analysis</strong></h1>
-<p align="center"><em>A complete SQL-based BI project using MySQL, CTEs & Window Functions</em></p>
+<p align="center"><em>A SQL-based sales analysis using MySQL, CTEs & Window Functions</em></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/SQL-MySQL-blue?style=for-the-badge" />
@@ -13,20 +13,47 @@
 
 ## 📘 **Project Overview**
 
-This project delivers **end-to-end sales analytics** for a pizza business using SQL.  
-Through MySQL, CTEs, Window Functions, and BI visualization tools, the analysis uncovers:
+This project analyses a year of pizza sales data (January to December 2015) in MySQL to find which pizzas, categories and times of day drive revenue. I wrote 16 queries using joins, aggregations, CTEs and window functions (RANK and cumulative sums), and presented the results with charts and a Canva presentation.
 
-- Revenue trends  
-- Product performance  
-- Category contribution  
-- Customer ordering behavior  
-- Monthly cumulative growth patterns  
-
-The goal is to demonstrate **real-world SQL analytics skills** and the ability to turn raw transactional data into actionable insights.
+**Business question:** What sells, when does it sell, and where does the revenue come from, so a pizza retailer can make better menu and staffing decisions?
 
 ---
 
-## 🔍 **Key Analyses Performed**
+## 🔎 **Key Findings**
+
+- **21,350 orders** generated **$817,860.05** in revenue. Monthly revenue was stable, from $64,027.60 (October) to $72,557.90 (July).
+- **Classic** is the strongest category: the most pizzas sold (**14,888**) and the highest revenue share (**26.91%**). Supreme is second (11,987 pizzas, 25.46%).
+- **Chicken** earns more than its size suggests. It has the fewest pizza types on the menu (6) and the lowest quantity (11,050), yet its pizzas take the **top 3 revenue spots**: Thai Chicken ($43,434.25), Barbecue Chicken ($42,768.00) and California Chicken ($41,409.50).
+- Revenue is spread fairly evenly across categories, between **23.68% and 26.91%**.
+- Orders peak at **lunch (12 PM: 2,520 and 1 PM: 2,455)** and **early evening (5 PM: 2,336 and 6 PM: 2,399)**, with a dip in the mid-afternoon (about 1,470 orders at 2 PM and 3 PM).
+- **Large** is the most common pizza size, and **The Greek Pizza** is the highest-priced.
+- The top 5 pizzas by quantity are Classic Deluxe, Barbecue Chicken, Hawaiian, Pepperoni and Thai Chicken. Pepperoni was the monthly top seller in 4 months, Hawaiian in 3.
+- **The Brie Carre Pizza** sells the least (**490**), about half of the next-lowest pizzas (Mediterranean 934, Calabrese 937, Spinach Supreme 950, Soppressata 961).
+
+---
+
+## ✅ **Recommendations**
+
+- Staff and prepare for the 12-1 PM and 5-6 PM peaks, and consider an offer to lift the mid-afternoon dip.
+- Promote the Chicken pizzas, especially Thai Chicken, since they earn the most revenue.
+- Review the bottom 5 pizzas, starting with Brie Carre: promote it or consider replacing it.
+- Keep a balanced menu, since no single category dominates revenue.
+
+---
+
+## ⚙️ **Process**
+
+1. Downloaded the dataset and validated the CSV files in Excel (missing values, duplicates); the data was clean.
+2. Imported the data into MySQL and checked the data types, changing them where needed.
+3. Wrote 16 analytical queries using joins, aggregations, CTEs and window functions.
+4. Built charts from the query results in Excel and Power BI.
+5. Presented the findings in a Canva presentation.
+
+**Dataset structure:** four tables (`orders`, `order_details`, `pizzas`, `pizza_types`), linked through `order_id`, `pizza_id` and `pizza_type_id`.
+
+---
+
+## 🔍 **Analyses Performed**
 
 ### 📦 Sales & Revenue
 - Total orders  
@@ -43,6 +70,7 @@ The goal is to demonstrate **real-world SQL analytics skills** and the ability t
 - Revenue contribution by category  
 - Category-wise distribution of pizzas  
 - Monthly cumulative revenue (CTE + Window Functions)  
+- Top-selling pizza of each month (RANK)  
 - Daily averages & hourly order patterns  
 
 ---
@@ -62,75 +90,50 @@ The goal is to demonstrate **real-world SQL analytics skills** and the ability t
 
 ## 📂 **Download All SQL Queries**
 
-▶️ **Download Here:**  
 📥 [**Queries.zip**](https://github.com/user-attachments/files/24082892/Queries.zip)
 
-(Contains all 16 SQL analytical queries with clean formatting)
+Contains all 16 SQL analytical queries.
 
 ---
 
 ## 📈 **Data Visualizations**
 
-Below are some charts generated as part of the analysis:
+### ⭐ **Cumulative Monthly Revenue**
+<img width="635" src="images/cumulative_monthly_revenue.png" />
 
----
-
-### ⭐ **Top-Selling Pizza**
-<img width="635" height="350" src="https://github.com/user-attachments/assets/8599521c-f30c-44ed-9dbe-19f2deae732b" />
-
----
-
-### ⭐ **Monthly Total Pizza Quantity**
-<img width="635" height="350" src="https://github.com/user-attachments/assets/ef330472-fb9b-40d8-9435-fa12be2704f7" />
-
----
+### ⭐ **Top 3 Pizzas by Revenue**
+<img width="635" src="images/top_3_pizzas_by_revenue.png" />
 
 ### ⭐ **Revenue % by Pizza Category**
-<img width="635" height="351" src="https://github.com/user-attachments/assets/43027137-6b1f-4bd4-9944-1099ee19af8e" />
+<img width="635" src="images/revenue_percentage_by_category.png" />
 
----
+### ⭐ **Top-Selling Pizza of Each Month**
+<img width="635" src="images/top_selling_pizza.PNG" />
 
-### ⭐ **Category-Wise Total Quantity**
-<img width="635" height="351" src="https://github.com/user-attachments/assets/41c7b19a-bce7-4f66-a71f-04a7d410c6ac" />
-
----
-
-### ⭐ **Category-Wise Pizza Distribution**
-<img width="635" height="351" src="https://github.com/user-attachments/assets/3078ad3b-6ef3-4056-a57c-d28d6162b4ac" />
-
----
-
-### ⭐ **Top 3 Most Ordered Pizzas**
-<img width="635" height="351" src="https://github.com/user-attachments/assets/8a461ba9-acd4-4ec1-a758-bddea2025140" />
-
----
+### ⭐ **Number of Pizza Types per Category**
+<img width="635" src="images/category_wise_distribution_of_pizzas.png" />
 
 ### ⭐ **Orders by Hour of the Day**
-<img width="635" height="351" src="https://github.com/user-attachments/assets/738de03a-d6d3-4c1a-ab85-fc2184d83628" />
-
----
+<img width="635" src="images/total_orders_by_hour.png" />
 
 ### ⭐ **Bottom 5 Least-Selling Pizzas**
-<img width="635" height="351" src="https://github.com/user-attachments/assets/4f420269-6104-4413-abaf-f693bb8539ae" />
+<img width="635" src="images/pizza_selling_least.png" />
 
 ---
 
-## 🎥 **Full Project Presentation**
+## 🎥 **Project Presentation**
 
-📄 **Download the presentation PDF**  
-👉 [**Pizza Sales Dashboard.pdf**](https://github.com/user-attachments/files/24082525/Pizza.sales.dashboard.pdf)
+📄 [**Pizza Sales Dashboard.pdf**](https://github.com/user-attachments/files/24082525/Pizza.sales.dashboard.pdf)
 
-This presentation includes KPI summaries, visual insights, and storytelling slides.
+KPI summaries, visual insights and the story behind the findings.
 
 ---
 
-## ⭐ **Key Highlights**
+## ⚠️ **Limitations**
 
-- 🔹 Real-world SQL analytics project  
-- 🔹 Clean, modular SQL queries with meaningful naming  
-- 🔹 Business-focused insights (not just technical queries)  
-- 🔹 Professional charts & dashboards  
-- 🔹 Perfect for Data Analyst / BI portfolio  
+- The findings come from one year of sales in a single dataset.
+- The analysis covers orders by pizza, category, month and hour of the day, not individual customers.
+- Findings describe this dataset only and are not forecasts.
 
 ---
 
@@ -139,10 +142,3 @@ This presentation includes KPI summaries, visual insights, and storytelling slid
 **📌 Kashaf Naz**  
 🔗 LinkedIn: [linkedin.com/in/kashaf-naz](https://linkedin.com/in/kashaf-naz)  
 🐙 GitHub: [github.com/Kashaf-naz](https://github.com/Kashaf-naz)
-
----
-
-<p align="center">
-  ⭐ If you like this project, don't forget to give the repository a star! ⭐
-</p>
-
