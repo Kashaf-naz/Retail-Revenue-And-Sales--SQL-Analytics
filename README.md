@@ -1,5 +1,5 @@
 <!-- HEADER -->
-<h1 align="center">🍕 <strong>Pizza Sales SQL Analysis</strong></h1>
+<h1 align="center">🍕 <strong>Retail Revenue & Sales SQL Analytics</strong></h1>
 <p align="center"><em>A SQL-based sales analysis using MySQL, CTEs & Window Functions</em></p>
 
 <p align="center">
